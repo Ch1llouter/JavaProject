@@ -1,0 +1,52 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: ManagementSystem
+  datasource:
+    hikari:
+      schema: management
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: b0wtnEWMg9Thgg7ZdoGAkqd31LgVh28F
+            client-secret: ul88JBS6wvfRGDmsdW6ltxOXYDGng3ZmnKDdyRO93-HB1cWwoqK150kaF6-MrqyC
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            issuer-uri: https://dev-4pd4vposzabsxxn1.us.auth0.com/
+  sql:
+    init:
+      encoding: UTF-8
+
+okta:
+  oauth2:
+    audience: https://api
+    issuer: https://dev-4pd4vposzabsxxn1.us.auth0.com/
+    client-id: b0wtnEWMg9Thgg7ZdoGAkqd31LgVh28F
+    client-secret: ul88JBS6wvfRGDmsdW6ltxOXYDGng3ZmnKDdyRO93-HB1cWwoqK150kaF6-MrqyC
+
+logging:
+  level:
+    root: INFO
+    com.example.management: DEBUG
+    org.springframework: INFO
+    org.hibernate.sql: INFO
